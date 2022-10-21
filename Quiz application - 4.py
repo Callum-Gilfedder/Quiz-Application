@@ -4,6 +4,7 @@
 # Find Quiz api 
 
 import tkinter as tk
+from turtle import color
 from matplotlib.ft2font import HORIZONTAL
 import requests
 
@@ -17,40 +18,14 @@ def initialise_screen():
 
 def create_title_label():
     text = tk.Label(screen, text="Quiz Application" , height = 4, width = 40, bg = "lightblue", font = ("Helvetica", 15))
-    text.pack()
 
 # So I do not need a menu button, I can just use a normal button but have four of them.
 
 
-def create_category_buttons():
-
-    def select1():
-        selection = "General Knowledge"
-        print(selection)
-    def select2():
-        selection = "Science"
-        print(selection)
-    def select3():
-        selection = "Entertainment"
-        print(selection)
-    def select4():
-        selection = "Miscellaneous"
-        print(selection)
-
-    button1 = tk.Button(text = "General Knowledge", command = select1)
-    button1.place(x=100, y=100)
-
-    button2 = tk.Button(text = "Science", command = select2)    
-    button2.place(x=100, y=140)
-
-    button3 = tk.Button(text = "Entertainment", command = select3)
-    button3.place(x=100, y=180)
-
-    button4 = tk.Button(text = "Miscellaneous", command = select4)
-    button4.place(x=100, y=220)
 
 
 
+    
 
 
 
@@ -79,7 +54,25 @@ def main():
         create_title_label()
     except:
         print("Error in creating title label")
-    create_category_buttons()
+
+
+    selection = ''
+
+
+    def assign_value(value):
+        global selection
+        selection = value
+        lbl["text"] = value
+        print(selection)
+
+    lbl = tk.Label(screen, text='Selection Goes Here')
+    lbl.grid(row=0, column=0)
+    tk.Button(text="General Knowledge", command=lambda: assign_value("General Knowledge")).grid(row=1, column=0)
+    tk.Button(text="Science", command=lambda: assign_value("Science")).grid(row=2, column=0)
+    tk.Button(text="Entertainment", command=lambda: assign_value("Entertainment")).grid(row=3, column=0)
+    tk.Button(text="Miscellaneous", command=lambda: assign_value("Miscellaneous")).grid(row=4, column=0)
+
+    print(selection)
 
     screen.mainloop()
 
