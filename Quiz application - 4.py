@@ -4,7 +4,6 @@
 # Find Quiz api 
 
 import tkinter as tk
-from unicodedata import category
 from matplotlib.ft2font import HORIZONTAL
 
 from numpy import place, var 
